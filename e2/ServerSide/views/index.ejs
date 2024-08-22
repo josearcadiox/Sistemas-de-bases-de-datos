@@ -1,0 +1,76 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+          sans-serif;
+      }
+      h1 {
+        color: #333;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        list-style: none;
+      }
+      input {
+        padding: 8px 8px 8px 8px;
+        border-radius: 5px;
+      }
+      button {
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: green;
+        color: white;
+        padding: 10px 10px 10px 10px;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Server-Side Rendered Book List</h1>
+    <ul>
+      <% books.forEach(function(book) { %>
+      <li><strong><%= book.title %></strong> by <%= book.author %></li>
+      <% }); %>
+    </ul>
+    <li>
+      <form action="/add-book" method="POST">
+        <h1>Add a New Book</h1>
+        <h2>Tittle:</h2>
+        <input
+          type="text"
+          name="title"
+          placeholder="Escribe el titulo:"
+          required
+        />
+        <h2>Author:</h2>
+        <input
+          type="text"
+          name="author"
+          placeholder="Escribe el autor:"
+          required
+        />
+        <br />
+        <button type="submit">Add Book</button>
+      </form>
+    </li>
+  </body>
+</html>
